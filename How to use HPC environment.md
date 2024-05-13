@@ -33,7 +33,7 @@ Seu diretório SCRATCH é o local para enviar os arquivos essenciais à submiss�
   ``` 
 
 ## Como Usar o Gerenciador de Pacotes EUPS
-O EUPS é um gerenciador de pacotes alternativo (e oficial do LSST) que permite carregar variáveis de ambiente e incluir o caminho para programas e bibliotecas de forma modular.
+O [EUPS](https://github.com/RobertLuptonTheGood/eups) é um gerenciador de pacotes alternativo (e oficial do LSST) que permite carregar variáveis de ambiente e incluir o caminho para programas e bibliotecas de forma modular.
 
 - **Para carregar o EUPS:**
   ```bash
@@ -57,8 +57,51 @@ O EUPS é um gerenciador de pacotes alternativo (e oficial do LSST) que permite 
   ```
   
 ## Como Submeter um Job
-Um Job solicita recursos de computação e especifica os aplicativos a serem iniciados nesses recursos, juntamente com quaisquer dados/opções de entrada e diretivas de saída. Para submeter um job 
+Um Job solicita recursos de computação e especifica os aplicativos a serem iniciados nesses recursos, juntamente com quaisquer dados/opções de entrada e diretivas de saída. O gerenciamento e agendamento das tarefas e recursos do cluster é feito através do Slurm. Logo, para submeter um Job é necessário utilizar um script como abaixo:
 
+```bash
+  #!/bin/bash
+  #SBATCH -p PARTITION                       #Name of the Partition to use
+  #SBATCH --nodelist=NODE                    #Name of the Node to be allocated
+  #SBATCH -J simple-job			                 #Job name
+  #----------------------------------------------------------------------------#
 
+  ##path to executable code
+  EXEC=/lustre/t0/scratch/users/YOUR.USER/EXECUTABLE.CODE
 
+  srun $EXEC
+```
+Nesse script é preciso especificar o **nome da fila (Partition)** que será usada, o **nome do nó** que será alocado para a excecução do Job, e o **caminho para o código/programa** a ser executado. \
+................................................[**_Para visualizar mais templates de script de submissão de Jobs, clique aqui_**]()...................................................
 
+- **Para submeter o Job:**
+  ```bash
+    sbatch script-submit.sh
+  ```
+Se o script estiver correto **haverá uma saída que indica o ID do job**.
+
+- **Para verificar o andamento e informações do Job:**
+  ```bash
+    scontrol show job <ID> 
+   ```
+- **Para cancelar o Job:**
+  ```bash
+    scancel <ID> 
+   ```
+
+#### Assita também os vídeos:
+* How to login
+* How to use EUPS
+* How to use storage area
+* How to submit a job
+
+#### Alguns Comandos Slurm  
+Para aprender sobre todas as opções disponíveis para cada comando, insira man <comando> enquanto estiver conectado ao ambiente do Cluster.
+
+|Comando	| Definição|
+|-----------|----------|
+|sbatch	| Envia scripts de tarefas para a fila de execução|
+|squeue	| Exibir estado dos jobs|
+|scontrol	| Usado para exibir o estado Slurm (várias opções disponíveis apenas para root)|
+|sinfo	| Exibir estado de partições e nós|
+|salloc	| Envia um job para execução ou inicia um trabalho em tempo real|
