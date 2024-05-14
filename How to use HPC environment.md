@@ -90,10 +90,10 @@ Se o script estiver correto **haverá uma saída que indica o ID do job**.
    ```
 
 #### Assita também os vídeos:
-* How to login
-* How to use EUPS
-* How to use storage area
-* How to submit a job
+* [How to login]()
+* [How to use EUPS]()
+* [How to use storage area]()
+* [How to submit a Job]()
 
 #### Alguns Comandos Slurm  
 Para aprender sobre todas as opções disponíveis para cada comando, insira man <comando> enquanto estiver conectado ao ambiente do Cluster.
