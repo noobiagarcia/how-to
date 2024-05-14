@@ -96,7 +96,7 @@ Se o script estiver correto **haverá uma saída que indica o ID do job**.
 * [How to submit a Job]()
 
 #### Alguns Comandos Slurm  
-Para aprender sobre todas as opções disponíveis para cada comando, insira man <comando> enquanto estiver conectado ao ambiente do Cluster.
+Para aprender sobre todas as opções disponíveis para cada comando, insira _man <comando>_ enquanto estiver conectado ao ambiente do Cluster.
 
 |Comando	| Definição|
 |-----------|----------|
